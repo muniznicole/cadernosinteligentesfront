@@ -3,21 +3,30 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validato
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { EstadoService } from '../../../services/estado.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Estado } from '../../../models/estado.model';
 import { EmptyError, Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ViewChild, ElementRef } from '@angular/core';
 
+import { Estado } from '../../../models/estado.model';
+import { EstadoService } from '../../../services/estado.service';
+
 @Component({
   selector: 'app-estado-form',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule,
-    MatInputModule, MatButtonModule, MatCardModule, MatToolbarModule, RouterModule],
+  imports: [
+    NgIf, 
+    ReactiveFormsModule, 
+    MatFormFieldModule,
+    MatInputModule, 
+    MatButtonModule, 
+    MatCardModule, 
+    MatToolbarModule, 
+    RouterModule
+  ],
   templateUrl: './estado-form.component.html',
   styleUrl: './estado-form.component.css'
 })
@@ -25,7 +34,8 @@ export class EstadoFormComponent {
 
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor (
+    private formBuilder: FormBuilder,
     private estadoService: EstadoService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
@@ -33,13 +43,13 @@ export class EstadoFormComponent {
     const estado: Estado = activatedRoute.snapshot.data['estado'];
 
     this.formGroup = formBuilder.group({
-      id: [(estado && estado.id) ? estado.id : null],
-      nome: [(estado && estado.nome) ? estado.nome : '', 
-            Validators.compose([Validators.required, 
-                                Validators.minLength(4)])],
-      sigla: [(estado && estado.sigla) ? estado.sigla : '', 
-            Validators.compose([Validators.required,
-                                Validators.minLength(2)])]
+        id: [(estado && estado.id) ? estado.id : null],
+        nome: [(estado && estado.nome) ? estado.nome : '', 
+              Validators.compose([Validators.required, 
+                                  Validators.minLength(4)])],
+        sigla: [(estado && estado.sigla) ? estado.sigla : '', 
+              Validators.compose([Validators.required,
+                                  Validators.minLength(2)])]
     });
 
   }
@@ -71,8 +81,8 @@ export class EstadoFormComponent {
       // erros relacionados a campos
       if (error.error?.errors) {
         error.error.errors.forEach((validationError: any) => {
-          // obs: o fieldName tem o mesmo valor da api
-          const formControl = this.formGroup.get(validationError.fieldName);
+        // obs: o fieldName tem o mesmo valor da api
+        const formControl = this.formGroup.get(validationError.fieldName);
           console.log(validationError);
           if (formControl) {
             console.log(formControl);
@@ -126,7 +136,7 @@ export class EstadoFormComponent {
     for (const errorName in errors) {
       if (errors.hasOwnProperty(errorName) && 
           this.errorMessages[controlName][errorName]) {
-            return this.errorMessages[controlName][errorName];
+        return this.errorMessages[controlName][errorName];
       }
     }
 

@@ -6,4 +6,4 @@ import { inject } from "@angular/core";
 export const estadoResolver: ResolveFn<Estado> =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
         return inject(EstadoService).buscar(route.paramMap.get('id')!);
-    }
+}

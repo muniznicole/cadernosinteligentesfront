@@ -12,23 +12,29 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-estado-list',
   standalone: true,
-  imports: [NgFor, MatTableModule, MatToolbarModule, MatIconModule
-    , MatButtonModule, RouterModule, MatPaginatorModule],
+  imports: [
+    NgFor, 
+    MatTableModule, 
+    MatToolbarModule, 
+    MatIconModule, 
+    MatButtonModule, 
+    RouterModule, 
+    MatPaginatorModule
+  ],
   templateUrl: './estado-list.component.html',
   styleUrl: './estado-list.component.css'
 })
 export class EstadoListComponent implements OnInit {
+  
   displayedColumns: string[] = ['id', 'nome', 'sigla', 'acao'];
   estados: Estado[] = [];
 
   // variaveis de controle de paginacao
   totalRecords = 0;
-  pageSize = 2;
+  pageSize = 10;
   page = 0;
 
-  constructor(private estadoService: EstadoService) {
-
-  }
+  constructor(private estadoService: EstadoService) { }
 
   ngOnInit(): void {
     this.estadoService.buscarTodos(this.page, this.pageSize).subscribe(data => {
