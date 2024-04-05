@@ -1,6 +1,6 @@
 export class Cor {
 
     id!: number;
-    nomeCor!: string;
+    cor!: string;
     
 }

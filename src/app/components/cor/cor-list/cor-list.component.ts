@@ -26,7 +26,7 @@ import { CorService } from '../../../services/cor.service';
 })
 export class CorListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nomeCor','acao'];
+  displayedColumns: string[] = ['id', 'cor','acao'];
   cores: Cor[] = [];
 
   constructor (

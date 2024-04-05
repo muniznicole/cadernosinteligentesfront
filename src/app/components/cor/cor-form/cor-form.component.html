@@ -7,17 +7,17 @@
             <form [formGroup]="formGroup">
                 <mat-form-field appearance="fill" class="full-width-input">
                     <mat-label> Nome da Cor </mat-label>
-                    <input matInput type="text" formControlName="nomeCor">
-                    <mat-error *ngIf="formGroup.get('nomeCor')?.errors && 
-                                      formGroup.get('nomeCor')?.touched">
-                        @if (formGroup.get('nomeCor')?.errors?.['required']) {
+                    <input matInput type="text" formControlName="cor">
+                    <mat-error *ngIf="formGroup.get('cor')?.errors && 
+                                      formGroup.get('cor')?.touched">
+                        @if (formGroup.get('cor')?.errors?.['required']) {
                             <span> O nome da cor deve ser informado. </span>
                         } 
-                        @if (formGroup.get('nomeCor')?.errors?.['minlength']) {
+                        @if (formGroup.get('cor')?.errors?.['minlength']) {
                             <span> O nome da cor deve possuir ao menos 4 caracteres. </span>
                         }
-                        @if (formGroup.get('nomeCor')?.hasError('apiError')) {
-                            <span>{{ formGroup.get('nomeCor')?.getError('apiError') }}</span>
+                        @if (formGroup.get('cor')?.hasError('apiError')) {
+                            <span>{{ formGroup.get('cor')?.getError('apiError') }}</span>
                         }
                     </mat-error>
                 </mat-form-field>

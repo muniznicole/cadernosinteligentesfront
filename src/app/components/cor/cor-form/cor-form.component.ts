@@ -44,7 +44,7 @@ export class CorFormComponent {
       
     this.formGroup = formBuilder.group({
       id: [(cor && cor.id) ? cor.id : null],
-      nomeCor: [(cor && cor.nomeCor) ? cor.nomeCor: '',
+      cor: [(cor && cor.cor) ? cor.cor: '',
             Validators.compose([Validators.required,
                                 Validators.minLength(4)])],
     });
@@ -95,7 +95,7 @@ export class CorFormComponent {
   }
 
   errorMessages: {[controlName: string]: {[errorName: string] : string}} = {
-    nomeCor: {
+    cor: {
       required: 'O nome da cor deve ser informado.',
       minlength: 'O nome da cor deve possuir ao menos 4 caracteres.'
     }
