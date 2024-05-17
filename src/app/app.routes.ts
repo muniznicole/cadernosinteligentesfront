@@ -16,6 +16,8 @@ import { DiscoListComponent } from './components/disco/disco-list/disco-list.com
 import { DiscoFormComponent } from './components/disco/disco-form/disco-form.component';
 import { discoResolver } from './components/disco/resolver/disco-resolver';
 
+import { LoginComponent } from './components/login/login.component';
+
 export const routes: Routes = [
     
     // { path: 'estados', component: EstadoListComponent, title: 'Lista de Estados'},
@@ -34,4 +36,5 @@ export const routes: Routes = [
     { path: 'discos/new', component: DiscoFormComponent, title: 'Novo Disco'},
     { path: 'discos/edit/:id', component: DiscoFormComponent, title:'Editar Disco', resolve: {disco: discoResolver}},
 
+    { path: 'login', component: LoginComponent, title: 'Login'},
 ];
